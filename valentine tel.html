@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Saint-Valentin 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 60px 80px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        h1 {
+            color: #ff6b9d;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        .heart {
+            font-size: 4em;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(1); }
+        }
+
+        .question {
+            font-size: 1.8em;
+            color: #333;
+            margin: 30px 0;
+            font-weight: 300;
+        }
+
+        .buttons-container {
+            position: relative;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 20px 50px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            touch-action: none;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .emoji {
+            font-size: 1.3em;
+            font-style: normal;
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        #yesBtn:hover {
+            box-shadow: 0 12px 30px rgba(255, 107, 157, 0.6);
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
+            color: #666;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1000;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        #noBtn.moving {
+            position: fixed;
+        }
+
+        /* Responsive pour mobile */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .heart {
+                font-size: 3em;
+            }
+
+            .question {
+                font-size: 1.3em;
+            }
+
+            button {
+                padding: 15px 35px;
+                font-size: 1.2em;
+                gap: 10px;
+            }
+
+            .buttons-container {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .heart {
+                font-size: 2.5em;
+            }
+
+            .question {
+                font-size: 1.1em;
+                margin: 20px 0;
+            }
+
+            button {
+                padding: 12px 25px;
+                font-size: 1em;
+                letter-spacing: 1px;
+            }
+
+            .emoji {
+                font-size: 1.2em;
+            }
+
+            .buttons-container {
+                gap: 15px;
+                margin-top: 30px;
+            }
+        }
+
+        .celebration {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .celebration h2 {
+            color: #ff6b9d;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .celebration p {
+            font-size: 1.3em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff6b9d;
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="question-section">
+            <h1>💕 Saint-Valentin 💕</h1>
+            <div class="heart">❤️</div>
+            <p class="question">Veux-tu être ma Valentine ?</p>
+            
+            <div class="buttons-container">
+                <button id="yesBtn" onclick="celebrate()">Oui ! <span class="emoji">😍</span></button>
+                <button id="noBtn">Non <span class="emoji">😢</span></button>
+            </div>
+        </div>
+
+        <div id="celebration" class="celebration">
+            <h2>🎉 Youpi ! 🎉</h2>
+            <div class="heart">💖</div>
+            <p>Je savais que tu dirais oui !<br>Tu es la meilleure Valentine du monde entier ! 🌹</p>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        let scale = 1.0; // Échelle initiale du bouton
+        const shrinkAmount = 0.15; // Réduction de 15% à chaque mouvement
+        let hasMovedOnce = false; // Pour savoir si le bouton a déjà bougé
+        
+        function moveButton() {
+            // Première fois que le bouton bouge, on le passe en position fixed
+            if (!hasMovedOnce) {
+                const btnRect = noBtn.getBoundingClientRect();
+                noBtn.classList.add('moving');
+                noBtn.style.left = btnRect.left + 'px';
+                noBtn.style.top = btnRect.top + 'px';
+                hasMovedOnce = true;
+            }
+            
+            // Réduire la taille du bouton
+            scale -= shrinkAmount;
+            
+            // Si le bouton est trop petit, le faire disparaître complètement
+            if (scale <= 0.1) {
+                noBtn.style.transform = 'scale(0)';
+                noBtn.style.opacity = '0';
+                noBtn.style.pointerEvents = 'none';
+                return;
+            }
+            
+            // Appliquer la nouvelle échelle
+            noBtn.style.transform = `scale(${scale})`;
+            
+            const btnRect = noBtn.getBoundingClientRect();
+            const yesBtnRect = yesBtn.getBoundingClientRect();
+            
+            let randomX, randomY;
+            let attempts = 0;
+            let validPosition = false;
+            
+            // Essayer de trouver une position qui ne chevauche pas le bouton OUI
+            while (!validPosition && attempts < 50) {
+                // Utiliser toute la fenêtre pour le déplacement
+                const maxX = window.innerWidth - btnRect.width - 40;
+                const maxY = window.innerHeight - btnRect.height - 40;
+                
+                randomX = 20 + Math.random() * (maxX - 20);
+                randomY = 20 + Math.random() * (maxY - 20);
+                
+                // Vérifier que la nouvelle position ne chevauche pas le bouton OUI
+                const noBtnLeft = randomX;
+                const noBtnRight = randomX + btnRect.width;
+                const noBtnTop = randomY;
+                const noBtnBottom = randomY + btnRect.height;
+                
+                const yesBtnLeft = yesBtnRect.left;
+                const yesBtnRight = yesBtnRect.right;
+                const yesBtnTop = yesBtnRect.top;
+                const yesBtnBottom = yesBtnRect.bottom;
+                
+                // Ajouter une marge de sécurité de 30px
+                const margin = 30;
+                const noOverlap = (noBtnRight + margin < yesBtnLeft || 
+                                 noBtnLeft - margin > yesBtnRight || 
+                                 noBtnBottom + margin < yesBtnTop || 
+                                 noBtnTop - margin > yesBtnBottom);
+                
+                if (noOverlap) {
+                    validPosition = true;
+                }
+                attempts++;
+            }
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Détecter la proximité de la souris sur toute la page (desktop)
+        document.addEventListener('mousemove', (e) => {
+            // Ne pas détecter si le bouton a déjà disparu
+            if (scale <= 0.1) return;
+            
+            const btnRect = noBtn.getBoundingClientRect();
+            const distance = 100; // Distance en pixels pour déclencher le mouvement
+            
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            const btnCenterX = btnRect.left + btnRect.width / 2;
+            const btnCenterY = btnRect.top + btnRect.height / 2;
+            
+            const dist = Math.sqrt(
+                Math.pow(mouseX - btnCenterX, 2) + 
+                Math.pow(mouseY - btnCenterY, 2)
+            );
+            
+            if (dist < distance) {
+                moveButton();
+            }
+        });
+
+        // Détecter le toucher qui approche (mobile)
+        document.addEventListener('touchmove', (e) => {
+            // Ne pas détecter si le bouton a déjà disparu
+            if (scale <= 0.1) return;
+            
+            const touch = e.touches[0];
+            const btnRect = noBtn.getBoundingClientRect();
+            const distance = 120; // Distance légèrement plus grande pour mobile
+            
+            const touchX = touch.clientX;
+            const touchY = touch.clientY;
+            
+            const btnCenterX = btnRect.left + btnRect.width / 2;
+            const btnCenterY = btnRect.top + btnRect.height / 2;
+            
+            const dist = Math.sqrt(
+                Math.pow(touchX - btnCenterX, 2) + 
+                Math.pow(touchY - btnCenterY, 2)
+            );
+            
+            if (dist < distance) {
+                e.preventDefault();
+                moveButton();
+            }
+        }, { passive: false });
+
+        // Déplacer le bouton quand la souris s'approche
+        noBtn.addEventListener('mouseenter', moveButton);
+        
+        // Aussi déplacer si on essaie de cliquer
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        // Pour mobile - déplacer au toucher
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        }, { passive: false });
+
+        function celebrate() {
+            document.getElementById('question-section').style.display = 'none';
+            document.getElementById('celebration').style.display = 'block';
+            
+            // Créer des confettis
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 100);
+            }
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.background = ['#ff6b9d', '#ffc3a0', '#ffafbd', '#ff8fab'][Math.floor(Math.random() * 4)];
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
