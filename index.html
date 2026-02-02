@@ -287,8 +287,8 @@
             <span class="emoji">💕</span>
         </div>
 
-            <div class="heart">❤️</div>
-            <p class="question">Veux-tu être ma Valentine ?</p>
+            <div class="heart" id="mainHeart">❤️</div>
+            <p class="question" id="questionText">Veux-tu être ma Valentine ?</p>
             
             <div class="buttons-container">
                 <button id="yesBtn" onclick="celebrate()">Oui ! <span class="emoji">😍</span></button>
@@ -299,11 +299,48 @@
         <div id="celebration" class="celebration">
             <h2>🎉 Youpi ! 🎉</h2>
             <div class="heart">💖</div>
-            <p>Je savais que tu dirais oui !<br>Tu es la meilleure Valentine du monde entier ! 🌹</p>
+            <p id="celebrationText">Je savais que tu dirais oui !<br>Tu es la meilleure Valentine du monde entier ! 🌹</p>
         </div>
     </div>
 
     <script>
+        // ========== DÉTECTION DU PARAMÈTRE URL ==========
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Détecter si c'est pour un homme ou une femme
+        const version = getUrlParameter('v');
+        const isMale = (version === 'm');
+
+        // Adapter le contenu selon la version
+        if (isMale) {
+            // Version MASCULINE
+            document.getElementById('mainHeart').textContent = '💙';
+            document.getElementById('questionText').textContent = 'Veux-tu être mon Valentin ?';
+            document.getElementById('celebrationText').innerHTML = 'Je savais que tu dirais oui !<br>Tu es le meilleur Valentin du monde entier ! 🌹';
+            
+            // Tracker dans Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    'page_title': 'Valentine Masculine',
+                    'page_location': window.location.href,
+                    'gender_version': 'male'
+                });
+            }
+        } else {
+            // Version FÉMININE (par défaut)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    'page_title': 'Valentine Féminine',
+                    'page_location': window.location.href,
+                    'gender_version': 'female'
+                });
+            }
+        }
+
+        // ========== RESTE DU CODE (INCHANGÉ) ==========
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
         let scale = 1.0; // Échelle initiale du bouton
@@ -327,7 +364,8 @@
                 gtag('event', 'no_button_dodge', {
                     'event_category': 'interaction',
                     'event_label': 'Tentative de clic sur Non',
-                    'value': noButtonAttempts
+                    'value': noButtonAttempts,
+                    'gender_version': isMale ? 'male' : 'female'
                 });
             }
             
@@ -345,7 +383,8 @@
                     gtag('event', 'no_button_disappeared', {
                         'event_category': 'interaction',
                         'event_label': 'Le bouton Non a disparu',
-                        'value': noButtonAttempts
+                        'value': noButtonAttempts,
+                        'gender_version': isMale ? 'male' : 'female'
                     });
                 }
                 return;
@@ -469,7 +508,8 @@
                 gtag('event', 'yes_clicked', {
                     'event_category': 'conversion',
                     'event_label': 'A dit Oui !',
-                    'value': 1
+                    'value': 1,
+                    'gender_version': isMale ? 'male' : 'female'
                 });
             }
             
@@ -503,7 +543,8 @@
                 gtag('event', 'time_on_page', {
                     'event_category': 'engagement',
                     'event_label': 'Temps passé (secondes)',
-                    'value': timeSpent
+                    'value': timeSpent,
+                    'gender_version': isMale ? 'male' : 'female'
                 });
             }
         });
