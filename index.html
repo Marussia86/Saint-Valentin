@@ -19,6 +19,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            padding: 20px;
         }
 
         .container {
@@ -29,6 +30,7 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
             max-width: 600px;
             margin: 0 auto;
+            width: 100%;
         }
 
         h1 {
@@ -66,6 +68,7 @@
             justify-content: center;
             align-items: center;
             gap: 30px;
+            flex-wrap: wrap;
         }
 
         button {
@@ -81,6 +84,7 @@
             display: inline-flex;
             align-items: center;
             gap: 15px;
+            touch-action: none;
         }
 
         button:hover {
@@ -113,6 +117,73 @@
         
         #noBtn.moving {
             position: fixed;
+        }
+
+        /* Responsive pour mobile */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .heart {
+                font-size: 3em;
+            }
+
+            .question {
+                font-size: 1.3em;
+            }
+
+            button {
+                padding: 15px 35px;
+                font-size: 1.2em;
+                gap: 10px;
+            }
+
+            .buttons-container {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .heart {
+                font-size: 2.5em;
+            }
+
+            .question {
+                font-size: 1.1em;
+                margin: 20px 0;
+            }
+
+            button {
+                padding: 12px 25px;
+                font-size: 1em;
+                letter-spacing: 1px;
+            }
+
+            .emoji {
+                font-size: 1.2em;
+            }
+
+            .buttons-container {
+                gap: 15px;
+                margin-top: 30px;
+            }
         }
 
         .celebration {
@@ -152,12 +223,55 @@
                 opacity: 0;
             }
         }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: nowrap;
+        }
+
+        .title h1 {
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .title .emoji {
+            font-size: 2.2em;
+            line-height: 1;
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .title {
+                gap: 10px;
+            }
+
+            .title .emoji {
+                font-size: 1.8em;
+            }
+        }
+
+        /* Centrage du cœur animé */
+        .heart {
+            display: flex;
+            justify-content: center;
+            line-height: 1;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div id="question-section">
-            <h1>💕 Saint-Valentin 💕</h1>
+            <div class="title">
+            <span class="emoji">💕</span>
+            <h1>Saint-Valentin</h1>
+            <span class="emoji">💕</span>
+        </div>
+
             <div class="heart">❤️</div>
             <p class="question">Veux-tu être ma Valentine ?</p>
             
@@ -178,7 +292,7 @@
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
         let scale = 1.0; // Échelle initiale du bouton
-        const shrinkAmount = 0.05; // Réduction de 15% à chaque mouvement
+        const shrinkAmount = 0.10; // Réduction de 10% à chaque mouvement
         let hasMovedOnce = false; // Pour savoir si le bouton a déjà bougé
         
         function moveButton() {
@@ -249,7 +363,7 @@
             noBtn.style.top = randomY + 'px';
         }
 
-        // Détecter la proximité de la souris sur toute la page
+        // Détecter la proximité de la souris sur toute la page (desktop)
         document.addEventListener('mousemove', (e) => {
             // Ne pas détecter si le bouton a déjà disparu
             if (scale <= 0.1) return;
@@ -273,6 +387,32 @@
             }
         });
 
+        // Détecter le toucher qui approche (mobile)
+        document.addEventListener('touchmove', (e) => {
+            // Ne pas détecter si le bouton a déjà disparu
+            if (scale <= 0.1) return;
+            
+            const touch = e.touches[0];
+            const btnRect = noBtn.getBoundingClientRect();
+            const distance = 120; // Distance légèrement plus grande pour mobile
+            
+            const touchX = touch.clientX;
+            const touchY = touch.clientY;
+            
+            const btnCenterX = btnRect.left + btnRect.width / 2;
+            const btnCenterY = btnRect.top + btnRect.height / 2;
+            
+            const dist = Math.sqrt(
+                Math.pow(touchX - btnCenterX, 2) + 
+                Math.pow(touchY - btnCenterY, 2)
+            );
+            
+            if (dist < distance) {
+                e.preventDefault();
+                moveButton();
+            }
+        }, { passive: false });
+
         // Déplacer le bouton quand la souris s'approche
         noBtn.addEventListener('mouseenter', moveButton);
         
@@ -286,7 +426,7 @@
         noBtn.addEventListener('touchstart', (e) => {
             e.preventDefault();
             moveButton();
-        });
+        }, { passive: false });
 
         function celebrate() {
             document.getElementById('question-section').style.display = 'none';
