@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💕 Saint-Valentin 💕</title>
-
-    <!-- Google tag (gtag.js) --->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QELS4WYFY9"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QELS4WYFY9');
     </script>
     
     <style>
@@ -246,11 +247,15 @@
         .title h1 {
             margin: 0;
             white-space: nowrap;
+            line-height: 1;
+            display: flex;
+            align-items: center;
         }
 
         .title .emoji {
             font-size: 2.2em;
             line-height: 1;
+            vertical-align: middle;
         }
 
         /* Mobile */
@@ -304,6 +309,7 @@
         let scale = 1.0; // Échelle initiale du bouton
         const shrinkAmount = 0.10; // Réduction de 10% à chaque mouvement
         let hasMovedOnce = false; // Pour savoir si le bouton a déjà bougé
+        let noButtonAttempts = 0; // Compteur de tentatives de clic sur "Non"
         
         function moveButton() {
             // Première fois que le bouton bouge, on le passe en position fixed
@@ -315,6 +321,16 @@
                 hasMovedOnce = true;
             }
             
+            // Incrémenter le compteur et envoyer l'événement à Google Analytics
+            noButtonAttempts++;
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'no_button_dodge', {
+                    'event_category': 'interaction',
+                    'event_label': 'Tentative de clic sur Non',
+                    'value': noButtonAttempts
+                });
+            }
+            
             // Réduire la taille du bouton
             scale -= shrinkAmount;
             
@@ -323,6 +339,15 @@
                 noBtn.style.transform = 'scale(0)';
                 noBtn.style.opacity = '0';
                 noBtn.style.pointerEvents = 'none';
+                
+                // Événement : bouton "Non" a complètement disparu
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'no_button_disappeared', {
+                        'event_category': 'interaction',
+                        'event_label': 'Le bouton Non a disparu',
+                        'value': noButtonAttempts
+                    });
+                }
                 return;
             }
             
@@ -439,6 +464,15 @@
         }, { passive: false });
 
         function celebrate() {
+            // Envoyer l'événement "Oui" à Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'yes_clicked', {
+                    'event_category': 'conversion',
+                    'event_label': 'A dit Oui !',
+                    'value': 1
+                });
+            }
+            
             document.getElementById('question-section').style.display = 'none';
             document.getElementById('celebration').style.display = 'block';
             
@@ -460,6 +494,19 @@
             
             setTimeout(() => confetti.remove(), 3000);
         }
+
+        // Tracker le temps passé sur la page
+        let pageLoadTime = new Date();
+        window.addEventListener('beforeunload', function() {
+            if (typeof gtag !== 'undefined') {
+                let timeSpent = Math.round((new Date() - pageLoadTime) / 1000);
+                gtag('event', 'time_on_page', {
+                    'event_category': 'engagement',
+                    'event_label': 'Temps passé (secondes)',
+                    'value': timeSpent
+                });
+            }
+        });
     </script>
 </body>
 </html>
