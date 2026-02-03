@@ -1,553 +1,752 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💕 Saint-Valentin 💕</title>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QELS4WYFY9"></script>
-    <script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saint-Valentin</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QELS4WYFY9"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-QELS4WYFY9');
-    </script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  </script>
 
-        body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            padding: 20px;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .container {
-            text-align: center;
-            background: white;
-            padding: 60px 80px;
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
-            margin: 0 auto;
-            width: 100%;
-        }
+    body {
+      font-family: Georgia, serif;
+      background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 20px;
+    }
 
-        h1 {
-            color: #ff6b9d;
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-        }
+    .container {
+      text-align: center;
+      background: white;
+      padding: 60px 80px;
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
 
-        .heart {
-            font-size: 4em;
-            animation: heartbeat 1.5s infinite;
-            display: inline-block;
-            margin: 20px 0;
-        }
+    h1 {
+      color: #ff6b9d;
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
 
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            10%, 30% { transform: scale(1.1); }
-            20%, 40% { transform: scale(1); }
-        }
+    .heart {
+      font-size: 4em;
+      animation: heartbeat 1.5s infinite;
+      display: inline-block;
+      margin: 20px 0;
+    }
 
-        .question {
-            font-size: 1.8em;
-            color: #333;
-            margin: 30px 0;
-            font-weight: 300;
-        }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      10%, 30% { transform: scale(1.1); }
+      20%, 40% { transform: scale(1); }
+    }
 
-        .buttons-container {
-            position: relative;
-            margin-top: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
+    .question {
+      font-size: 1.8em;
+      color: #333;
+      margin: 30px 0;
+      font-weight: 300;
+    }
 
-        button {
-            padding: 20px 50px;
-            font-size: 1.5em;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            touch-action: none;
-        }
+    .buttons-container {
+      position: relative;
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
 
-        button:hover {
-            transform: scale(1.05);
-        }
+    button {
+      padding: 20px 50px;
+      font-size: 1.5em;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      touch-action: none;
+    }
 
-        .emoji {
-            font-size: 1.3em;
-            font-style: normal;
-        }
+    button:hover {
+      transform: scale(1.05);
+    }
 
-        #yesBtn {
-            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
-            color: white;
-            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
-        }
+    .emoji {
+      font-size: 1.3em;
+      font-style: normal;
+    }
 
-        #yesBtn:hover {
-            box-shadow: 0 12px 30px rgba(255, 107, 157, 0.6);
-        }
+    .yesBtn {
+      background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+    }
 
-        #noBtn {
-            background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
-            color: #666;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 1000;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        
-        #noBtn.moving {
-            position: fixed;
-        }
+    .yesBtn:hover {
+      box-shadow: 0 12px 30px rgba(255, 107, 157, 0.6);
+    }
 
-        /* Responsive pour mobile */
-        @media (max-width: 768px) {
-            .container {
-                padding: 40px 30px;
-            }
+    .noBtn {
+      background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
+      color: #666;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 1000;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
 
-            h1 {
-                font-size: 2em;
-            }
+    .noBtn.moving {
+      position: fixed;
+    }
 
-            .heart {
-                font-size: 3em;
-            }
+    .gift-box {
+    margin-top: 30px;
+    padding: 20px 25px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #fff0f6 0%, #ffeef7 100%);
+    border: 2px solid #ffdfed;
+    box-shadow: 0 12px 35px rgba(255, 107, 157, 0.15);
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    }
 
-            .question {
-                font-size: 1.3em;
-            }
+    .gift-box h3 {
+    color: #ff6b9d;
+    font-size: 1.6em;
+    margin-bottom: 8px;
+    font-weight: bold;
+    }
 
-            button {
-                padding: 15px 35px;
-                font-size: 1.2em;
-                gap: 10px;
-            }
+    .gift-intro {
+    font-size: 0.85em;
+    color: #888;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    }
 
-            .buttons-container {
-                gap: 20px;
-            }
-        }
+    .gift-grid {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    }
 
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
+    .gift-item {
+    background: white;
+    border-radius: 18px;
+    padding: 12px 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    min-width: 140px;
+    flex: 1 1 130px;
+    }
 
-            .container {
-                padding: 30px 20px;
-            }
+    .gift-item h4 {
+    margin: 0 0 8px;
+    font-size: 1em;
+    color: #333;
+    font-weight: 600;
+    }
 
-            h1 {
-                font-size: 1.5em;
-            }
+    .gift-btn {
+    display: block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.85em;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(255, 107, 157, 0.4);
+    transition: all 0.2s ease;
+    }
 
-            .heart {
-                font-size: 2.5em;
-            }
+    .gift-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(255, 107, 157, 0.6);
+    }
 
-            .question {
-                font-size: 1.1em;
-                margin: 20px 0;
-            }
+    .gift-main-btn {
+    margin-top: 20px;
+    padding: 15px 35px;
+    font-size: 1.1em;
+    }
 
-            button {
-                padding: 12px 25px;
-                font-size: 1em;
-                letter-spacing: 1px;
-            }
 
-            .emoji {
-                font-size: 1.2em;
-            }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 30px;
+      }
 
-            .buttons-container {
-                gap: 15px;
-                margin-top: 30px;
-            }
-        }
+      h1 {
+        font-size: 2em;
+      }
 
-        .celebration {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
+      .heart {
+        font-size: 3em;
+      }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
+      .question {
+        font-size: 1.3em;
+      }
 
-        .celebration h2 {
-            color: #ff6b9d;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
+      button {
+        padding: 15px 35px;
+        font-size: 1.2em;
+        gap: 10px;
+      }
 
-        .celebration p {
-            font-size: 1.3em;
-            color: #555;
-            line-height: 1.6;
-        }
+      .buttons-container {
+        gap: 20px;
+      }
+    }
 
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #ff6b9d;
-            position: absolute;
-            animation: confetti-fall 3s linear infinite;
-        }
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
 
-        @keyframes confetti-fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
+      .container {
+        padding: 30px 20px;
+      }
 
-        .title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: nowrap;
-        }
+      h1 {
+        font-size: 1.5em;
+      }
 
-        .title h1 {
-            margin: 0;
-            white-space: nowrap;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-        }
+      .heart {
+        font-size: 2.5em;
+      }
 
-        .title .emoji {
-            font-size: 2.2em;
-            line-height: 1;
-            vertical-align: middle;
-        }
+      .question {
+        font-size: 1.1em;
+        margin: 20px 0;
+      }
 
-        /* Mobile */
-        @media (max-width: 480px) {
-            .title {
-                gap: 10px;
-            }
+      button {
+        padding: 12px 25px;
+        font-size: 1em;
+        letter-spacing: 1px;
+      }
 
-            .title .emoji {
-                font-size: 1.8em;
-            }
-        }
+      .emoji {
+        font-size: 1.2em;
+      }
 
-        /* Centrage du cœur animé */
-        .heart {
-            display: flex;
-            justify-content: center;
-            line-height: 1;
-        }
+      .buttons-container {
+        gap: 15px;
+        margin-top: 30px;
+      }
+    }
 
-    </style>
+    .celebration {
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .celebration h2 {
+      color: #ff6b9d;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .celebration p {
+      font-size: 1.3em;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: #ff6b9d;
+      position: absolute;
+      animation: confetti-fall 3s linear infinite;
+    }
+
+    @keyframes confetti-fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: nowrap;
+    }
+
+    .title h1 {
+      margin: 0;
+      white-space: nowrap;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .title .emoji {
+      font-size: 2.2em;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 480px) {
+      .title {
+        gap: 10px;
+      }
+
+      .title .emoji {
+        font-size: 1.8em;
+      }
+    }
+
+    .heart#mainHeart {
+      display: flex;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    /* SECTION IDÉES CADEAUX AMAZON */
+    .gift-ideas {
+      margin-top: 40px;
+      padding: 30px 20px;
+      border-radius: 20px;
+      background: #fff0f6;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .gift-ideas h3 {
+      color: #ff6b9d;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+
+    .gift-intro {
+      font-size: 0.9em;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .gift-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .gift-item {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 15px 18px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+      text-align: left;
+    }
+
+    .gift-item h4 {
+      margin: 0 0 8px;
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .gift-item p {
+      margin: 0 0 12px;
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    .gift-btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+      color: #fff;
+      font-weight: bold;
+      font-size: 0.9em;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 6px 15px rgba(255, 107, 157, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .gift-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(255, 107, 157, 0.6);
+    }
+
+    .gift-main-btn {
+      margin-top: 20px;
+      padding: 15px 35px;
+      font-size: 1.1em;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div id="question-section">
-            <div class="title">
-            <span class="emoji">💕</span>
-            <h1>Saint-Valentin</h1>
-            <span class="emoji">💕</span>
-        </div>
+  <div class="container">
+    <div id="question-section">
+      <div class="title">
+        <span class="emoji">💕</span>
+        <h1>Saint-Valentin</h1>
+        <span class="emoji">💕</span>
+      </div>
 
-            <div class="heart" id="mainHeart">❤️</div>
-            <p class="question" id="questionText">Veux-tu être ma Valentine ?</p>
-            
-            <div class="buttons-container">
-                <button id="yesBtn" onclick="celebrate()">Oui ! <span class="emoji">😍</span></button>
-                <button id="noBtn">Non <span class="emoji">😢</span></button>
-            </div>
-        </div>
+      <div class="heart" id="mainHeart">❤️</div>
 
-        <div id="celebration" class="celebration">
-            <h2>🎉 Youpi ! 🎉</h2>
-            <div class="heart">💖</div>
-            <p id="celebrationText">Je savais que tu dirais oui !<br>Tu es la meilleure Valentine du monde entier ! 🌹</p>
-        </div>
+      <p class="question" id="questionText">
+        Veux-tu être ma Valentine ?
+      </p>
+
+      <div class="buttons-container">
+        <button id="yesBtn" class="yesBtn" onclick="celebrate()">
+          Oui !
+          <span class="emoji">😍</span>
+        </button>
+
+        <button id="noBtn" class="noBtn">
+          Non
+          <span class="emoji">😅</span>
+        </button>
+      </div>
     </div>
 
-    <script>
-        // ========== DÉTECTION DU PARAMÈTRE URL ==========
-        function getUrlParameter(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
+    <div id="celebration" class="celebration">
+    <h2>Youpi !</h2>
+    <div class="heart">💖</div>
+    <p id="celebrationText">
+        Je savais que tu dirais oui !<br />
+        Tu es la meilleure Valentine du monde entier !
+    </p>
 
-        // Détecter si c'est pour un homme ou une femme
-        const version = getUrlParameter('v');
-        const isMale = (version === 'm');
+    <!-- BOX CADEAUX SÉPARÉE ET PLUS PETITE -->
+    <section id="gift-ideas" class="gift-box">
+        <h3>💝 Idées cadeaux</h3>
 
-        // Adapter le contenu selon la version
-        if (isMale) {
-            // Version MASCULINE
-            document.getElementById('mainHeart').textContent = '💙';
-            document.getElementById('questionText').textContent = 'Veux-tu être mon Valentin ?';
-            document.getElementById('celebrationText').innerHTML = 'Je savais que tu dirais oui !<br>Tu es le meilleur Valentin du monde entier ! 🌹';
-            
-            // Tracker dans Google Analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'page_view', {
-                    'page_title': 'Valentine Masculine',
-                    'page_location': window.location.href,
-                    'gender_version': 'male'
-                });
-            }
-        } else {
-            // Version FÉMININE (par défaut)
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'page_view', {
-                    'page_title': 'Valentine Féminine',
-                    'page_location': window.location.href,
-                    'gender_version': 'female'
-                });
-            }
-        }
+        <div class="gift-grid">
+        <!-- Idée 1 -->
+        <article class="gift-item">
+            <h4>Bracelets assortis pour couple</h4>
+            <a href="https://amzn.to/4kha9Gk" class="gift-btn" target="_blank" rel="noopener noreferrer">
+            Voir sur Amazon
+            </a>
+        </article>
 
-        // ========== RESTE DU CODE (INCHANGÉ) ==========
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        let scale = 1.0; // Échelle initiale du bouton
-        const shrinkAmount = 0.10; // Réduction de 10% à chaque mouvement
-        let hasMovedOnce = false; // Pour savoir si le bouton a déjà bougé
-        let noButtonAttempts = 0; // Compteur de tentatives de clic sur "Non"
-        
-        function moveButton() {
-            // Première fois que le bouton bouge, on le passe en position fixed
-            if (!hasMovedOnce) {
-                const btnRect = noBtn.getBoundingClientRect();
-                noBtn.classList.add('moving');
-                noBtn.style.left = btnRect.left + 'px';
-                noBtn.style.top = btnRect.top + 'px';
-                hasMovedOnce = true;
-            }
-            
-            // Incrémenter le compteur et envoyer l'événement à Google Analytics
-            noButtonAttempts++;
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'no_button_dodge', {
-                    'event_category': 'interaction',
-                    'event_label': 'Tentative de clic sur Non',
-                    'value': noButtonAttempts,
-                    'gender_version': isMale ? 'male' : 'female'
-                });
-            }
-            
-            // Réduire la taille du bouton
-            scale -= shrinkAmount;
-            
-            // Si le bouton est trop petit, le faire disparaître complètement
-            if (scale <= 0.1) {
-                noBtn.style.transform = 'scale(0)';
-                noBtn.style.opacity = '0';
-                noBtn.style.pointerEvents = 'none';
-                
-                // Événement : bouton "Non" a complètement disparu
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'no_button_disappeared', {
-                        'event_category': 'interaction',
-                        'event_label': 'Le bouton Non a disparu',
-                        'value': noButtonAttempts,
-                        'gender_version': isMale ? 'male' : 'female'
-                    });
-                }
-                return;
-            }
-            
-            // Appliquer la nouvelle échelle
-            noBtn.style.transform = `scale(${scale})`;
-            
-            const btnRect = noBtn.getBoundingClientRect();
-            const yesBtnRect = yesBtn.getBoundingClientRect();
-            
-            let randomX, randomY;
-            let attempts = 0;
-            let validPosition = false;
-            
-            // Essayer de trouver une position qui ne chevauche pas le bouton OUI
-            while (!validPosition && attempts < 50) {
-                // Utiliser toute la fenêtre pour le déplacement
-                const maxX = window.innerWidth - btnRect.width - 40;
-                const maxY = window.innerHeight - btnRect.height - 40;
-                
-                randomX = 20 + Math.random() * (maxX - 20);
-                randomY = 20 + Math.random() * (maxY - 20);
-                
-                // Vérifier que la nouvelle position ne chevauche pas le bouton OUI
-                const noBtnLeft = randomX;
-                const noBtnRight = randomX + btnRect.width;
-                const noBtnTop = randomY;
-                const noBtnBottom = randomY + btnRect.height;
-                
-                const yesBtnLeft = yesBtnRect.left;
-                const yesBtnRight = yesBtnRect.right;
-                const yesBtnTop = yesBtnRect.top;
-                const yesBtnBottom = yesBtnRect.bottom;
-                
-                // Ajouter une marge de sécurité de 30px
-                const margin = 30;
-                const noOverlap = (noBtnRight + margin < yesBtnLeft || 
-                                 noBtnLeft - margin > yesBtnRight || 
-                                 noBtnBottom + margin < yesBtnTop || 
-                                 noBtnTop - margin > yesBtnBottom);
-                
-                if (noOverlap) {
-                    validPosition = true;
-                }
-                attempts++;
-            }
-            
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
-        }
+        <!-- Idée 2 -->
+        <article class="gift-item">
+            <h4>Timberland Portefeuille</h4>
+            <a href="https://amzn.to/4aeOY33" class="gift-btn" target="_blank" rel="noopener noreferrer">
+            Voir sur Amazon
+            </a>
+        </article>
 
-        // Détecter la proximité de la souris sur toute la page (desktop)
-        document.addEventListener('mousemove', (e) => {
-            // Ne pas détecter si le bouton a déjà disparu
-            if (scale <= 0.1) return;
-            
-            const btnRect = noBtn.getBoundingClientRect();
-            const distance = 100; // Distance en pixels pour déclencher le mouvement
-            
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-            
-            const btnCenterX = btnRect.left + btnRect.width / 2;
-            const btnCenterY = btnRect.top + btnRect.height / 2;
-            
-            const dist = Math.sqrt(
-                Math.pow(mouseX - btnCenterX, 2) + 
-                Math.pow(mouseY - btnCenterY, 2)
-            );
-            
-            if (dist < distance) {
-                moveButton();
-            }
+        <!-- Idée 3 -->
+        <article class="gift-item">
+            <h4>Elizabeth Arden Red Door</h4>
+            <a href="https://amzn.to/3ZNmbh8" class="gift-btn" target="_blank" rel="noopener noreferrer">
+            Voir sur Amazon
+            </a>
+        </article>
+
+        <!-- Idée 4 -->
+        <article class="gift-item">
+            <h4>Jeu pour couple</h4>
+            <a href="https://amzn.to/3ZRa8PO" class="gift-btn" target="_blank" rel="noopener noreferrer">
+            Voir sur Amazon
+            </a>
+        </article>
+        </div>
+
+        <!-- MENTION AMAZON -->
+        <p class="amazon-disclosure">
+            Partenaire Amazon : commission sur certains achats.
+        </p>
+    </section>
+    </div>
+
+
+  <script>
+    // Récupérer un paramètre d'URL
+    function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // Détecter si c'est pour un homme ou une femme
+    const version = getUrlParameter('v');
+    const isMale = version === 'm';
+
+    // Adapter le contenu selon la version
+    if (isMale) {
+      // Version MASCULINE
+      document.getElementById('mainHeart').textContent = '💙';
+      document.getElementById('questionText').textContent = 'Veux-tu être mon Valentin ?';
+      document.getElementById('celebrationText').innerHTML =
+        "Je savais que tu dirais oui !<br>Tu es le meilleur Valentin du monde entier !";
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'pageview', {
+          page_title: 'Valentine Masculine',
+          page_location: window.location.href,
+          gender: 'male'
         });
-
-        // Détecter le toucher qui approche (mobile)
-        document.addEventListener('touchmove', (e) => {
-            // Ne pas détecter si le bouton a déjà disparu
-            if (scale <= 0.1) return;
-            
-            const touch = e.touches[0];
-            const btnRect = noBtn.getBoundingClientRect();
-            const distance = 120; // Distance légèrement plus grande pour mobile
-            
-            const touchX = touch.clientX;
-            const touchY = touch.clientY;
-            
-            const btnCenterX = btnRect.left + btnRect.width / 2;
-            const btnCenterY = btnRect.top + btnRect.height / 2;
-            
-            const dist = Math.sqrt(
-                Math.pow(touchX - btnCenterX, 2) + 
-                Math.pow(touchY - btnCenterY, 2)
-            );
-            
-            if (dist < distance) {
-                e.preventDefault();
-                moveButton();
-            }
-        }, { passive: false });
-
-        // Déplacer le bouton quand la souris s'approche
-        noBtn.addEventListener('mouseenter', moveButton);
-        
-        // Aussi déplacer si on essaie de cliquer
-        noBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            moveButton();
+      }
+    } else {
+      // Version FÉMININE par défaut
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'pageview', {
+          page_title: 'Valentine Féminine',
+          page_location: window.location.href,
+          gender: 'female'
         });
+      }
+    }
 
-        // Pour mobile - déplacer au toucher
-        noBtn.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            moveButton();
-        }, { passive: false });
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
 
-        function celebrate() {
-            // Envoyer l'événement "Oui" à Google Analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'yes_clicked', {
-                    'event_category': 'conversion',
-                    'event_label': 'A dit Oui !',
-                    'value': 1,
-                    'gender_version': isMale ? 'male' : 'female'
-                });
-            }
-            
-            document.getElementById('question-section').style.display = 'none';
-            document.getElementById('celebration').style.display = 'block';
-            
-            // Créer des confettis
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    createConfetti();
-                }, i * 100);
-            }
+    let scale = 1.0;
+    const shrinkAmount = 0.10;
+    let hasMovedOnce = false;
+    let noButtonAttempts = 0;
+
+    function moveButton() {
+      if (!hasMovedOnce) {
+        const btnRect = noBtn.getBoundingClientRect();
+        noBtn.classList.add('moving');
+        noBtn.style.left = btnRect.left + 'px';
+        noBtn.style.top = btnRect.top + 'px';
+        hasMovedOnce = true;
+      }
+
+      noButtonAttempts++;
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'nobutton_dodge', {
+          event_category: 'interaction',
+          event_label: 'Tentative de clic sur Non',
+          value: noButtonAttempts,
+          gender: isMale ? 'male' : 'female'
+        });
+      }
+
+      scale -= shrinkAmount;
+
+      if (scale <= 0.1) {
+        noBtn.style.transform = 'scale(0)';
+        noBtn.style.opacity = '0';
+        noBtn.style.pointerEvents = 'none';
+
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'nobutton_disappeared', {
+            event_category: 'interaction',
+            event_label: 'Le bouton Non a disparu',
+            value: noButtonAttempts,
+            gender: isMale ? 'male' : 'female'
+          });
+        }
+        return;
+      }
+
+      noBtn.style.transform = `scale(${scale})`;
+
+      const btnRect = noBtn.getBoundingClientRect();
+      const yesBtnRect = yesBtn.getBoundingClientRect();
+
+      let randomX, randomY;
+      let attempts = 0;
+      let validPosition = false;
+
+      while (!validPosition && attempts < 50) {
+        const maxX = window.innerWidth - btnRect.width - 40;
+        const maxY = window.innerHeight - btnRect.height - 40;
+
+        randomX = 20 + Math.random() * (maxX - 20);
+        randomY = 20 + Math.random() * (maxY - 20);
+
+        const noBtnLeft = randomX;
+        const noBtnRight = randomX + btnRect.width;
+        const noBtnTop = randomY;
+        const noBtnBottom = randomY + btnRect.height;
+
+        const yesBtnLeft = yesBtnRect.left;
+        const yesBtnRight = yesBtnRect.right;
+        const yesBtnTop = yesBtnRect.top;
+        const yesBtnBottom = yesBtnRect.bottom;
+
+        const margin = 30;
+
+        const noOverlap =
+          noBtnRight + margin < yesBtnLeft ||
+          noBtnLeft - margin > yesBtnRight ||
+          noBtnBottom + margin < yesBtnTop ||
+          noBtnTop - margin > yesBtnBottom;
+
+        if (noOverlap) {
+          validPosition = true;
+          noBtn.style.left = randomX + 'px';
+          noBtn.style.top = randomY + 'px';
         }
 
-        function createConfetti() {
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.background = ['#ff6b9d', '#ffc3a0', '#ffafbd', '#ff8fab'][Math.floor(Math.random() * 4)];
-            confetti.style.animationDelay = Math.random() * 2 + 's';
-            document.body.appendChild(confetti);
-            
-            setTimeout(() => confetti.remove(), 3000);
-        }
+        attempts++;
+      }
+    }
 
-        // Tracker le temps passé sur la page
-        let pageLoadTime = new Date();
-        window.addEventListener('beforeunload', function() {
-            if (typeof gtag !== 'undefined') {
-                let timeSpent = Math.round((new Date() - pageLoadTime) / 1000);
-                gtag('event', 'time_on_page', {
-                    'event_category': 'engagement',
-                    'event_label': 'Temps passé (secondes)',
-                    'value': timeSpent,
-                    'gender_version': isMale ? 'male' : 'female'
-                });
-            }
+    document.addEventListener('mousemove', (e) => {
+      if (scale <= 0.1) return;
+
+      const btnRect = noBtn.getBoundingClientRect();
+      const distance = 100;
+
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const btnCenterX = btnRect.left + btnRect.width / 2;
+      const btnCenterY = btnRect.top + btnRect.height / 2;
+
+      const dist = Math.sqrt(
+        Math.pow(mouseX - btnCenterX, 2) +
+        Math.pow(mouseY - btnCenterY, 2)
+      );
+
+      if (dist < distance) {
+        moveButton();
+      }
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (scale <= 0.1) return;
+
+      const touch = e.touches[0];
+      const btnRect = noBtn.getBoundingClientRect();
+      const distance = 120;
+
+      const touchX = touch.clientX;
+      const touchY = touch.clientY;
+
+      const btnCenterX = btnRect.left + btnRect.width / 2;
+      const btnCenterY = btnRect.top + btnRect.height / 2;
+
+      const dist = Math.sqrt(
+        Math.pow(touchX - btnCenterX, 2) +
+        Math.pow(touchY - btnCenterY, 2)
+      );
+
+      if (dist < distance) {
+        e.preventDefault();
+        moveButton();
+      }
+    }, { passive: false });
+
+    noBtn.addEventListener('mouseenter', moveButton);
+
+    noBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      moveButton();
+    });
+
+    noBtn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      moveButton();
+    }, { passive: false });
+
+    function celebrate() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'yes_clicked', {
+          event_category: 'conversion',
+          event_label: 'A dit Oui !',
+          value: 1,
+          gender: isMale ? 'male' : 'female'
         });
-    </script>
+      }
+
+      document.getElementById('question-section').style.display = 'none';
+      document.getElementById('celebration').style.display = 'block';
+
+      for (let i = 0; i < 50; i++) {
+        setTimeout(createConfetti, i * 100);
+      }
+    }
+
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+
+      confetti.style.left = Math.random() * 100 + '%';
+
+      const colors = ['#ff6b9d', '#ffc3a0', '#ffafbd', '#ff8fab'];
+      confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+      confetti.style.animationDelay = Math.random() * 2 + 's';
+
+      document.body.appendChild(confetti);
+
+      setTimeout(() => {
+        confetti.remove();
+      }, 3000);
+    }
+
+    // Scroll vers la section cadeaux
+    function scrollToGifts() {
+      const section = document.getElementById('gift-ideas');
+      if (!section) return;
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Tracker le temps passé sur la page
+    let pageLoadTime = new Date();
+    window.addEventListener('beforeunload', function () {
+      if (typeof gtag !== 'undefined') {
+        let timeSpent = Math.round((new Date() - pageLoadTime) / 1000);
+        gtag('event', 'time_on_page', {
+          event_category: 'engagement',
+          event_label: 'Temps passé en secondes',
+          value: timeSpent,
+          gender: isMale ? 'male' : 'female'
+        });
+      }
+    });
+  </script>
 </body>
 </html>
