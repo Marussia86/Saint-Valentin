@@ -94,7 +94,7 @@
       display: inline-flex;
       align-items: center;
       gap: 15px;
-      touch-action: none;
+      touch-action: manipulation;
     }
 
     button:hover {
@@ -754,32 +754,25 @@
 
 
     // API : Canada → CA, sinon FR 
-    async function getVisitorCountry() {
-    try {
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-        return data.country_code; 
-    } catch (error) {
-        console.log('Détection pays échouée, default FR');
-        return 'FR'; // Par défaut France
-    }
-    }
-
-    // Redirection pour les 4 liens
     async function smartAmazonRedirect(index) {
-    const country = await getVisitorCountry();
+    console.log('🔍 Clic sur bouton', index);  // Debug
     
-    // Liens Amazon selon pays
+    const country = await getVisitorCountry();
+    console.log('🌍 Pays détecté:', country);  // Debug
+
     const links = {
-        0: { ca: 'https://amzn.to/4kha9Gk', fr: 'https://amzn.to/4rt11Rm' }, // Bracelet
-        1: { ca: 'https://amzn.to/4aeOY33', fr: 'https://amzn.to/3ZRa8PO' }, // Portefeuille
-        2: { ca: 'https://amzn.to/3ZNmbh8', fr: 'https://amzn.to/4cddTGG' }, // Parfum
-        3: { ca: 'https://amzn.to/3ZRa8PO', fr: 'https://amzn.to/4kehztK' } // Jeu couple
+        0: { ca: 'https://amzn.to/4kha9Gk', fr: 'https://www.amazon.fr/MANVEN-Bracelet-Projection-Amoureux-Anniversaires/dp/B0CBWT2MF7?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2YUDXR8HG4N4D&dib=eyJ2IjoiMSJ9.pXUWWsvT8o6Ml-tCrdvcurUBHjMnbOg2iL7sCjy5gu9heAOFSgIJENDa4mw82qvRBXI86-t5wYsnY31gAsuFyrcbUzN8Rnd9TYaZ9bFNxxW-suHQt9iVgQkjornJEeZXB2x635-EvDx-hZ0zP7WdQ75rXQkBPTQ8eSPmnNlNalmGlgSPLkthw3_ikm31wl4jX0HRPDplMts_Hcw2r5dycozbdCjSbPDSSfYX-VnIY9skSS0NgRU_Uj_9dpNRtD18RTvWnBVrVjTmsPo8ZQDWQwBkWN3eOUMak_rlc_dvZVU.YNPeOH5lfMrJCmQGSjYqOzgkRnHYEOecA0eH9taxUmc&dib_tag=se&keywords=bracelet+couple&qid=1770092134&sprefix=bracelet+coup%2Caps%2C284&sr=8-16&linkCode=ll2&tag=yannismtl-21&linkId=cb60650b8a33aec0e2d357ece2f52aee&ref_=as_li_ss_tl' },
+        1: { ca: 'https://amzn.to/4aeOY33', fr: 'https://www.amazon.fr/TENBST-Portefeuille-Porte-Cartes-Bancaire-Compartiment/dp/B0D3PYHDDG?_encoding=UTF8&pd_rd_w=l3Yd8&content-id=amzn1.sym.5633189b-a269-4b24-8a80-52a48568a326%3Aamzn1.symc.752cde0b-d2ce-4cce-9121-769ea438869e&pf_rd_p=5633189b-a269-4b24-8a80-52a48568a326&pf_rd_r=10V8JH1R4212H352Y53W&pd_rd_wg=zI05o&pd_rd_r=e7be0698-aabf-46a5-8eff-332122ddd10c&th=1&linkCode=ll2&tag=yannismtl-21&linkId=1e82f41904f875471dbeae360a4285ab&ref_=as_li_ss_tl' },
+        2: { ca: 'https://amzn.to/3ZNmbh8', fr: 'https://www.amazon.fr/Giorgio-Beverly-Hills-Toilette-Spray/dp/B001BKK3LO?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2MVOP1HPU0WBT&dib=eyJ2IjoiMSJ9.nhuvmfh8DL_lvezJCQo-mmxWpuVMCWlKHFF9rZKBYYZweasqLJ6sLkm0oHQ8RPryf3ONKK4AOAsX-hXsW6ktBOg1pLF57KdwagibRs0IW_K5zFC2m5LVU7TY6i81z_3yEHv59cDkS-T1hMODhHCDOlt0uIPYHP3IB8x_qnsSp7H6O5ZzBqs_0gtm5qfiYgMy8Yq6G-8owHuHZHncXoGc2da7y4yeUEp3qDuEv44KUpbsigJVBtj01gbN-MlcWRxI_LrkE1GFz4luVz5VVggkTrtgBs3rZ1PXDykKEreXywQ.9REzBfwovhitKJDM6XDOgPaTUZNXAd-PoJP_a0an8zI&dib_tag=se&keywords=parfum%2Bfemme&qid=1770092221&sprefix=parfum%2Bfe%2Caps%2C286&sr=8-5&th=1&linkCode=ll2&tag=yannismtl-21&linkId=49f5c58936898c640d9b7a4c60d46443&ref_=as_li_ss_tl' },
+        3: { ca: 'https://amzn.to/3ZRa8PO', fr: 'https://www.amazon.fr/OSMOOZ-Couples-REd%C3%A9couvrir-Couple-fabriqu%C3%A9es/dp/B0926YDQNS?crid=12RWEVZRRGBHE&dib=eyJ2IjoiMSJ9.czSZ1DAY4WynsonFF6Hpo0sujKbu9zQUtI7cd1q-EkPXDTdpxY25n1OGhrEnELHcK50RGd-Hqe1D-Fa7vho7LpOLK53hgCJ33bVrYu-NTE2HlZpZwmG2K2kvTTeg-uhmkyGf_p1cGOPxZjUnKNh7t8zDa_fDViGPvv2JbmdDlWMBCFdjJwu6XsdCgjI7bynL5oq-aX3d7aPEe5oWvPjOqgXQmcPO75zUOOPLmPbDrQcYA0COW_tpj83BDVZI_cAPzZ9RD1f6vp3ppfZR6ze7fq_sWQIZEdmlL6scB69iDQc.MOmo5PaKtrYKJEMEp4i5Z4EBuq5dN_E3QSJkuKVm0og&dib_tag=se&keywords=osmooz&qid=1770092255&sprefix=osmoo%2Caps%2C279&sr=8-2&th=1&linkCode=ll2&tag=yannismtl-21&linkId=f3a3e2cde68cbd19bef4ac55b3e5a76d&ref_=as_li_ss_tl' }
     };
     
     const link = country === 'CA' ? links[index].ca : links[index].fr;
+    console.log('🔗 Lien ouvert:', link);  // Debug
+    
     window.open(link, '_blank', 'noopener,noreferrer');
     }
+
 
     // Cache pour éviter trop d'appels API (10 min)
     let countryCache = null;
