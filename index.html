@@ -28,7 +28,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      overflow: visible !important;
       padding: 20px;
     }
 
@@ -180,9 +180,10 @@
     }
 
     .gift-btn {
-    display: block;
+    display: inline-block;  /* Mieux que block pour button */
     padding: 8px 16px;
     border-radius: 20px;
+    border: none;           /* ✅ NOUVEAU */
     background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
     color: #fff;
     font-weight: bold;
@@ -190,9 +191,12 @@
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    cursor: pointer;        /* ✅ NOUVEAU */
     box-shadow: 0 4px 12px rgba(255, 107, 157, 0.4);
     transition: all 0.2s ease;
     }
+
+
 
     .gift-btn:hover {
     transform: translateY(-1px);
@@ -460,7 +464,7 @@
         Tu es la meilleure Valentine du monde entier !
     </p>
 
-    <!-- BOX CADEAUX SÉPARÉE ET PLUS PETITE -->
+    <!-- BOX CADEAUX SÉPARÉE -->
     <section id="gift-ideas" class="gift-box">
         <h3>💝 Idées cadeaux</h3>
 
@@ -468,33 +472,33 @@
         <!-- Idée 1 -->
         <article class="gift-item">
             <h4>Bracelets assortis pour couple</h4>
-            <a href="https://amzn.to/4kha9Gk" class="gift-btn" target="_blank" rel="noopener noreferrer">
+            <button onclick="smartAmazonRedirect(0)" class="gift-btn">
             Voir sur Amazon
-            </a>
+            </button>
         </article>
 
         <!-- Idée 2 -->
         <article class="gift-item">
-            <h4>Timberland Portefeuille</h4>
-            <a href="https://amzn.to/4aeOY33" class="gift-btn" target="_blank" rel="noopener noreferrer">
+            <h4>Portefeuille en cuir</h4>
+            <button onclick="smartAmazonRedirect(1)" class="gift-btn">
             Voir sur Amazon
-            </a>
+            </button>
         </article>
 
         <!-- Idée 3 -->
         <article class="gift-item">
-            <h4>Elizabeth Arden Red Door</h4>
-            <a href="https://amzn.to/3ZNmbh8" class="gift-btn" target="_blank" rel="noopener noreferrer">
+            <h4>Eau de toilette</h4>
+            <button onclick="smartAmazonRedirect(2)" class="gift-btn">
             Voir sur Amazon
-            </a>
+            </button>
         </article>
 
         <!-- Idée 4 -->
         <article class="gift-item">
             <h4>Jeu pour couple</h4>
-            <a href="https://amzn.to/3ZRa8PO" class="gift-btn" target="_blank" rel="noopener noreferrer">
+            <button onclick="smartAmazonRedirect(3)" class="gift-btn">
             Voir sur Amazon
-            </a>
+            </button>
         </article>
         </div>
 
@@ -747,6 +751,52 @@
         });
       }
     });
+
+
+    // API : Canada → CA, sinon FR 
+    async function getVisitorCountry() {
+    try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        return data.country_code; 
+    } catch (error) {
+        console.log('Détection pays échouée, default FR');
+        return 'FR'; // Par défaut France
+    }
+    }
+
+    // Redirection pour les 4 liens
+    async function smartAmazonRedirect(index) {
+    const country = await getVisitorCountry();
+    
+    // Liens Amazon selon pays
+    const links = {
+        0: { ca: 'https://amzn.to/4kha9Gk', fr: 'https://amzn.to/4rt11Rm' }, // Bracelet
+        1: { ca: 'https://amzn.to/4aeOY33', fr: 'https://amzn.to/3ZRa8PO' }, // Portefeuille
+        2: { ca: 'https://amzn.to/3ZNmbh8', fr: 'https://amzn.to/4cddTGG' }, // Parfum
+        3: { ca: 'https://amzn.to/3ZRa8PO', fr: 'https://amzn.to/4kehztK' } // Jeu couple
+    };
+    
+    const link = country === 'CA' ? links[index].ca : links[index].fr;
+    window.open(link, '_blank', 'noopener,noreferrer');
+    }
+
+    // Cache pour éviter trop d'appels API (10 min)
+    let countryCache = null;
+    let cacheTime = 0;
+    const CACHE_DURATION = 10 * 60 * 1000; // 10 min
+
+    async function getCachedCountry() {
+    const now = Date.now();
+    if (countryCache && (now - cacheTime) < CACHE_DURATION) {
+        return countryCache;
+    }
+    countryCache = await getVisitorCountry();
+    cacheTime = now;
+    return countryCache;
+    }
+
+
   </script>
 </body>
 </html>
